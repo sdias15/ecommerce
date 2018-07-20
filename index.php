@@ -8,7 +8,9 @@ $app->config('debug', true);
 
 $app->get('/', function() {
     
-	echo "OK1";
+	$page = new Hcode\Page();
+
+	$page->setTpl("index");
 
 });
 
