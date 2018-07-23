@@ -23,15 +23,18 @@ class User extends Model {
 		));
 
 		if (count($results) === 0) {
-			throw new \Exception("Não foi possível fazer login.");
+			throw new \Exception("Utilizador inexistente ou password invalida!!!!");
 		}
 
 		$data = $results[0];
 
-		if (password_verify($password, $data["despassword"])) {
+		if (password_verify($password, $data["despassword"]) === true)
+
+		{
 
 			$user = new User();
 			$user->setData($data);
+
 
 			$_SESSION[User::SESSION] = $user->getValues();
 
@@ -39,7 +42,7 @@ class User extends Model {
 
 		} else {
 
-			throw new \Exception("Não foi possível fazer login.");
+			throw new \Exception("Utilizador inexistente ou password invalida!!!!");
 
 		}
 
@@ -72,6 +75,8 @@ class User extends Model {
 
 	}
 
-}
+
+	}
+
 
  ?>
